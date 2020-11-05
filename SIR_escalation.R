@@ -136,7 +136,7 @@ tvec1 = seq(0,t.hat,.1)
 tvec2 = seq(t.hat,100,.1)
 
 # Make the figure.
-#png(file = "Results.png", width = 600)
+png(file = "Results.png", width = 600)
 par(mfrow = c(2,2), mar = c(5, 4, 2, 2))
 # The analytic expression for I(t) for the linear SIR model
 plot(tvec1, I0*exp(lambda1*tvec1)*tot.popn, lty = 2, typ="l",xlim = c(0,100), ylab ="Number of infected individuals", xlab = "day", bty = "L")
@@ -202,7 +202,7 @@ plot(t.hat.vec, I.max.SIR*tot.popn, typ = "l", lty = 2, xlab = "day restrictions
 lines(t.hat.vec, peak.cases)
 legend("topleft",
        legend = c("SIR", "COVID-19"), lty = c(2,1), bty = "n")
-#dev.off()
+dev.off()
 
 ###--------- FIGURE - RE-ESCALATION AT DAY 7 VS. DAY 14
 # Burn-in the numerical soluations for some time before plotting
@@ -221,7 +221,7 @@ t2 = max(which(times<=scen2))
 
 # This plot considers only clinically infected individuals and the
 # nonlinear COVID-19 model
-#png(file="two-scenarios.png",width=1100,height=550)
+png(file="two-scenarios.png",width=1100,height=550)
 par(mfrow = c(1,2), mar = c(5.1, 5.1, 4.1, 2.1))
 plot(times - burn.in, Ic.data[scen1,]*tot.popn, xlab="days", typ = "l",bty="L", ylab="number of clinical infections", xlim = c(0,50), main = "Restrictions enacted on day 7",ylim = c(0,150), lwd=3,cex.lab=2, cex.main = 2, cex.axis=2)
 rect(scen1-burn.in, 0, i1, 30, col="orange", lwd=0)
@@ -237,4 +237,4 @@ lines(c(scen2-burn.in,scen2-burn.in),c(0,Ic.data[scen2,t2])*tot.popn, col = "ora
 text(27,20,labels="duration of restrictions", col = "white",cex=1.6)
 text(29,10,labels="is longer", col = "white",cex=1.6)
 text(16,50,labels="day 14", col = "orange", cex=1.7, srt=90)
-#dev.off()
+dev.off()
